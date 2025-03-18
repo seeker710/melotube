@@ -11,13 +11,12 @@ export const DIMENSIONS = {
     HEIGHT_WINDOW: Dimensions.get("window").height,
     HEIGHT_STATUS_BAR: StatusBar.currentHeight,
     HEIGHT_BOTTOM_TAB_BAR: 54,
-    HEIGHT_MINI_PLAYER: 56,
+    HEIGHT_MINI_PLAYER: 64,
     WIDTH_SCREEN: Dimensions.get("screen").width,
     WIDTH_WINDOW: Dimensions.get("window").width,
     WIDTH_BORDER: 1,
     Z_INDEX_BOTTOM_TAB_BAR: 2,
     Z_INDEX_SLIDING_BOTTOM: 1,
-    Z_INDEX_TOP_TAB_BAR: 2,
 }
 
 // this value is used in BottomTabBar.js and MiniPlayer.js animations

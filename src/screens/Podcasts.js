@@ -18,7 +18,7 @@ const Podcasts = () => {
                 /**
                  * @description padding to show last item in list, as it is hidden by mini player 
                  */
-                contentContainerStyle={{ paddingBottom: 172 }}
+                contentContainerStyle={{ paddingBottom: 152 }}
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
             >

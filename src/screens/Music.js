@@ -26,7 +26,7 @@ const Music = () => {
                 /**
                  * @description padding to show last item in list, as it is hidden by mini player
                  */
-                ListFooterComponent={<View style={{ paddingBottom: 172 }} />}
+                ListFooterComponent={<View style={{ paddingBottom: 152 }} />}
             />
         </View>
     );
