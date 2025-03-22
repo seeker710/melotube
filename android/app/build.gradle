@@ -94,9 +94,9 @@ android {
         }
         release {
             storeFile file('melotube-release-key.jks')
-            storePassword 'Sagarmandal#7'
+            storePassword 'storepassword'
             keyAlias 'my-key-alias'
-            keyPassword 'Sagarmandal#7'
+            keyPassword 'keypassword'
         }
     }
     buildTypes {

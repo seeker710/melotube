@@ -72,3 +72,11 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# android
+android/app/src/*.keystore
+android/app/src/*.jks
+
+# keystore
+**/*.keystore
+**/*.jks
