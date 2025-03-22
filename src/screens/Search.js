@@ -1,12 +1,12 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 // import components
-import SearchBar from "../components/search-components/SearchBar";
-import TrendingSearches from "../components/search-components/TrendingSearches";
+import SearchBar from "../components/search/SearchBar";
+import TrendingSearches from "../components/search/TrendingSearches";
+import Channel from "../components/search/Channel";
 // import constants
 import { COLORS } from "../constants/colors";
 import { STYLES } from "../constants/styles";
-import Channel from "../components/search-components/Channel";
 
 const Search = () => {
     return (

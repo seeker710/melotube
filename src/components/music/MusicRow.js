@@ -7,7 +7,7 @@ import SongItem from "./SongItem";
 // import constants
 import { STYLES } from "../../constants/styles";
 
-const MusicRow = ({ title, songs, index, total }) => {
+const MusicRow = ({ title, songs, index }) => {
 
     const isFirst = index === 0;
 

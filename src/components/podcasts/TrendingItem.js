@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 // import components
-import SongItem from "../music-components/SongItem";
+import SongItem from "../music/SongItem";
 
 /**
  * @description 

@@ -19,9 +19,3 @@ const App = () => {
 }
 
 export default App;
-/**
- * @author seeker710
- * @description z-index: 2 Bottom Tab Navigator, Top Tab Navigator
- * @description z-index: 1 Mini Player & Player screen
- * @description z-index: 0 Rest of screens
- */

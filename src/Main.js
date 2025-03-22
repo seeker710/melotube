@@ -1,13 +1,13 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useSharedValue } from "react-native-reanimated";
 // import components
-import BottomTabBar from "./components/main-components/BottomTabBar";
-import SlidingBottom from "./components/main-components/SlidingBottom";
+import BottomTabBar from "./components/main/BottomTabBar";
+import SlidingBottom from "./components/main/SlidingBottom";
 import Home from "./screens/Home";
 import Search from "./screens/Search";
 // import icons
-import HomeIcon from "../assets/bottom-tab-bar/home.svg";
-import SearchIcon from "../assets/bottom-tab-bar/search.svg";
+import HomeIcon from "../assets/icons/home.svg";
+import SearchIcon from "../assets/icons/search.svg";
 // import constants
 import { SNAP_BOTTOM } from "./constants/dimensions";
 
@@ -55,3 +55,10 @@ const Main = () => {
 }
 
 export default Main;
+/**
+ * @author seeker710
+ * @description z-index: 2 Bottom Tab Navigator
+ * @description z-index: 1 Mini Player & Player screen
+ * @description z-index: 0 Rest of screens
+ * @global for icon follow snake-case
+ */

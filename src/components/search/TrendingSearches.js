@@ -15,7 +15,7 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
 const TrendingSearches = () => {
 
     // setting fake data in state, later actual data will be fetched from backend
-    const [myData, _] = useState(searchData); 
+    const [myData, _] = useState(searchData);
     // inital # of items to render
     const [renderNum, setRenderNum] = useState(3);
     // state for see all or collapse

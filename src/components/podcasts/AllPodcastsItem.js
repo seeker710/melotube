@@ -1,13 +1,13 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 // import constants
 import { COLORS } from "../../constants/colors";
-import { DIMENSIONS } from "../../constants/dimensions";
 import { STYLES } from "../../constants/styles";
 // import icons
-import ExplicitIcon from "../../../assets/explicit/explicit.svg";
+import ExplicitIcon from "../../../assets/icons/explicit.svg";
 
 const AllPodcastsItem = ({ allPodcastsData }) => {
 
+    const ICON_SIZE_15 = 15;
     // extracting the data to be rendered
     const { image, title, more_info: { square_image }, explicit_content } = allPodcastsData || {};
 
@@ -23,7 +23,7 @@ const AllPodcastsItem = ({ allPodcastsData }) => {
                 {
                     (explicit_content === "1")
                     && <View style={styles.iconContainer}>
-                        <ExplicitIcon height={DIMENSIONS.ICON_SIZE_15} width={DIMENSIONS.ICON_SIZE_15} fill={COLORS.FOCUSED_TEXT_COLOR} />
+                        <ExplicitIcon height={ICON_SIZE_15} width={ICON_SIZE_15} fill={COLORS.FOCUSED_TEXT_COLOR} />
                     </View>
                 }
                 {/* this view contains podcasts title */}

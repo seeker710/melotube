@@ -1,18 +1,10 @@
 import { useEffect } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
-import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
+import Animated, { Easing, Extrapolation, interpolate, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 import LinearGradient from "react-native-linear-gradient";
 // import constants
 import { COLORS } from "../../constants/colors";
 import { DIMENSIONS } from "../../constants/dimensions";
-
-const config = {
-    damping: 13,
-    mass: 1,
-    stiffness: 110,
-    restSpeedThreshold: 0.1,
-    restDisplacementThreshold: 0.1,
-};
 
 const TopTabBar = ({ state, descriptors, navigation }) => {
     return (
@@ -51,30 +43,32 @@ const TopTabBar = ({ state, descriptors, navigation }) => {
                             }
                         }
 
-                        const widthSharedValue = useSharedValue(isFocused ? 1 : 0);
-                        const fontSharedValue = useSharedValue(isFocused ? 24 : 18);
-
-                        useEffect(() => {
-                            widthSharedValue.value = withSpring(isFocused ? 1 : 0, config);
-                            {/* fontSharedValue.value = withSpring(isFocused ? 24 : 18, config); */ }
-                            fontSharedValue.value = withTiming(isFocused ? 24 : 18, { duration: 200 });
-                        }, [state.index]);
-
-                        const widthAnimation = useAnimatedStyle(() => {
+                        {/* animation stuff */ }
+                        const scaleXSharedValue = useSharedValue(isFocused ? 1 : 0);
+                        const scaleXAnimation = useAnimatedStyle(() => {
                             'worklet';
                             return {
-                                height: isFocused ? 2 : 0,
-                                width: `${widthSharedValue.value * 100}%`,
-                            };
+                                transform: [{
+                                    scaleX: scaleXSharedValue.value,
+                                }]
+                            }
                         });
                         const fontAnimation = useAnimatedStyle(() => {
                             'worklet';
                             return {
                                 color: isFocused ? COLORS.FOCUSED_TEXT_COLOR : COLORS.UNFOCUSED_TEXT_COLOR,
-                                fontSize: fontSharedValue.value,
                                 fontWeight: isFocused ? "700" : "500",
+                                transform: [{
+                                    scale: interpolate(scaleXSharedValue.value, [1, 0], [1, (3 / 4)], Extrapolation.CLAMP),
+                                }],
                             };
                         });
+                        useEffect(() => {
+                            scaleXSharedValue.set(() => withTiming(isFocused ? 1 : 0, {
+                                duration: 300,
+                                easing: Easing.linear,
+                            }));
+                        }, [state.index]);
 
                         return (
                             <Pressable
@@ -88,11 +82,11 @@ const TopTabBar = ({ state, descriptors, navigation }) => {
                             >
                                 <View style={styles.navItem}>
                                     <View style={styles.labelContainer}>
-                                        <Animated.Text style={[fontAnimation]}>
+                                        <Animated.Text style={[styles.label, fontAnimation]}>
                                             {label}
                                         </Animated.Text>
                                     </View>
-                                    <Animated.View style={[styles.underline, widthAnimation]} />
+                                    <Animated.View style={[styles.underline, scaleXAnimation]} />
                                 </View>
                             </Pressable>
                         );
@@ -101,7 +95,7 @@ const TopTabBar = ({ state, descriptors, navigation }) => {
             </View>
         </LinearGradient>
     );
-}
+};
 
 const styles = StyleSheet.create({
     tabBarContainer: {
@@ -110,13 +104,13 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignContent: "center",
         overflow: "hidden",
-        paddingHorizontal: 22,
+        paddingBottom: 12,
+        paddingHorizontal: 28,
         paddingTop: 16 + DIMENSIONS.HEIGHT_STATUS_BAR,
     },
     // styles for each nav item/container
     navItem: {
-        paddingBottom: 11,
-        paddingHorizontal: 11,
+        // no styling
     },
     // styles for each tab item label/text container
     labelContainer: {
@@ -124,10 +118,16 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         height: 32,
     },
+    label: {
+        fontSize: 24,
+        transformOrigin: "center",
+    },
     underline: {
         backgroundColor: COLORS.PRIMARY_COLOR,
         borderRadius: 2,
         height: 2,
+        transformOrigin: "center",
+        width: "100%",
     },
 });
 

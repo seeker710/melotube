@@ -1,6 +1,6 @@
 import { FlatList, ScrollView, View } from "react-native";
 // import components
-import MusicHeader from "../music-components/MusicHeader";
+import MusicHeader from "../music/MusicHeader";
 import TrendingItem from "./TrendingItem";
 // import constants
 import { STYLES } from "../../constants/styles";

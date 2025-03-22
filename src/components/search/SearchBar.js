@@ -1,16 +1,17 @@
 import { useRef, useState } from "react";
 import { Keyboard, StyleSheet, TextInput, View } from "react-native";
 // import icons
-import ArrowBackIcon from "../../../assets/search-bar/arrow_back.svg";
-import CloseIcon from "../../../assets/search-bar/close.svg";
-import MicIcon from "../../../assets/search-bar/mic.svg";
-import SearchBoldIcon from "../../../assets/search-bar/search_bold.svg";
+import ArrowBackIcon from "../../../assets/icons/arrow_back.svg";
+import CloseIcon from "../../../assets/icons/close.svg";
+import MicIcon from "../../../assets/icons/mic.svg";
+import SearchBoldIcon from "../../../assets/icons/search_bold.svg";
 // import constants
 import { COLORS } from "../../constants/colors";
 import { DIMENSIONS } from "../../constants/dimensions";
 
 const SearchBar = () => {
 
+    const ICON_SIZE_22 = 22;
     // state for search query
     const [query, setQuery] = useState("");
     // check if keyboard is visible or not
@@ -39,8 +40,8 @@ const SearchBar = () => {
                 {/* this view contains search/arrow back button */}
                 {
                     keyboardVisible
-                        ? <ArrowBackIcon onPress={arrowBackPress} height={DIMENSIONS.ICON_SIZE_22} width={DIMENSIONS.ICON_SIZE_22} fill={COLORS.FOCUSED_TEXT_COLOR} />
-                        : <SearchBoldIcon onPress={searchPress} height={DIMENSIONS.ICON_SIZE_22} width={DIMENSIONS.ICON_SIZE_22} fill={COLORS.FOCUSED_TEXT_COLOR} />
+                        ? <ArrowBackIcon onPress={arrowBackPress} height={ICON_SIZE_22} width={ICON_SIZE_22} fill={COLORS.FOCUSED_TEXT_COLOR} />
+                        : <SearchBoldIcon onPress={searchPress} height={ICON_SIZE_22} width={ICON_SIZE_22} fill={COLORS.FOCUSED_TEXT_COLOR} />
                 }
                 {/* this view contains TextInput */}
                 <TextInput
@@ -58,8 +59,8 @@ const SearchBar = () => {
                 {/* this view contains mic/close icon */}
                 {
                     query.length !== 0
-                        ? <CloseIcon onPress={() => setQuery("")} height={DIMENSIONS.ICON_SIZE_22} width={DIMENSIONS.ICON_SIZE_22} fill={COLORS.FOCUSED_TEXT_COLOR} />
-                        : <MicIcon height={DIMENSIONS.ICON_SIZE_22} width={DIMENSIONS.ICON_SIZE_22} fill={COLORS.FOCUSED_TEXT_COLOR} />
+                        ? <CloseIcon onPress={() => setQuery("")} height={ICON_SIZE_22} width={ICON_SIZE_22} fill={COLORS.FOCUSED_TEXT_COLOR} />
+                        : <MicIcon height={ICON_SIZE_22} width={ICON_SIZE_22} fill={COLORS.FOCUSED_TEXT_COLOR} />
                 }
             </View>
         </View>

@@ -9,7 +9,7 @@ export const COLORS = {
     PLAYER_BACKGROUND_COLOR: "#f2f2f2",
     SUB_HEADER_TEXT_COLOR: "#8b929a",
     GRADIENT_COLORS: ["#c0f1ec", "#eef1f5"],
-}
+};
 
 /**
  * this is the data we are getting from useTheme()

@@ -2,13 +2,13 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import { capitalCase } from "change-case";
 // import constants
 import { COLORS } from "../../constants/colors";
-import { DIMENSIONS } from "../../constants/dimensions";
 import { STYLES } from "../../constants/styles";
 // import icons
-import ViewMoreIcon from "../../../assets/view-more/view_more.svg";
+import ViewMoreIcon from "../../../assets/icons/view_more.svg";
 
 const TrendingSearchesItem = ({ searchData }) => {
 
+    const ICON_SIZE_24 = 24;
     // destructure the song data
     const { title, subtitle, image } = searchData;
 
@@ -25,7 +25,7 @@ const TrendingSearchesItem = ({ searchData }) => {
             </View>
             {/* this view contains view-more icon */}
             <View style={styles.iconContainer}>
-                <ViewMoreIcon height={DIMENSIONS.ICON_SIZE_24} width={DIMENSIONS.ICON_SIZE_24} fill={COLORS.UNFOCUSED_TEXT_COLOR} />
+                <ViewMoreIcon height={ICON_SIZE_24} width={ICON_SIZE_24} fill={COLORS.UNFOCUSED_TEXT_COLOR} />
             </View>
         </View>
     );

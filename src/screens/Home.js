@@ -2,7 +2,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 // import components
 import Music from "./Music";
 import Podcasts from "./Podcasts";
-import TopTabBar from "../components/home-components/TopTabBar";
+import TopTabBar from "../components/home/TopTabBar";
 
 const TopTab = createMaterialTopTabNavigator();
 

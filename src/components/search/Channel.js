@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 // import components
-import MusicHeader from "../music-components/MusicHeader";
+import MusicHeader from "../music/MusicHeader";
 import ChannelItem from "./ChannelItem";
 // import constants
 import { STYLES } from "../../constants/styles";

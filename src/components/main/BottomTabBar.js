@@ -9,21 +9,22 @@ import useKeyboardVisible from "../../hooks/useKeyboardVisibile";
 
 const BottomTabBar = ({ state, descriptors, navigation, translationY }) => {
 
+    const ICON_SIZE_30 = 30;
     // check if keyboard is visible or not
     const isKeyboardVisible = useKeyboardVisible();
 
     // animation stuff
     const translationYAnimation = useAnimatedStyle(() => {
-        'worlet';
+        'worklet';
         return {
-            transform: [
-                { translateY: interpolate(translationY.value, [SNAP_TOP, SNAP_BOTTOM], [DIMENSIONS.HEIGHT_BOTTOM_TAB_BAR, 0], Extrapolation.CLAMP) },
-            ]
+            transform: [{
+                translateY: interpolate(translationY.value, [SNAP_TOP, SNAP_BOTTOM], [DIMENSIONS.HEIGHT_BOTTOM_TAB_BAR, 0], Extrapolation.CLAMP)
+            }]
         };
     });
 
     return (
-        <Animated.View style={[styles.tabBarContainer, translationYAnimation, isKeyboardVisible && { display: "none" }]} >
+        <Animated.View style={[styles.tabBarContainer, translationYAnimation, isKeyboardVisible && { display: "none" }]}>
             {
                 state.routes.map((route, index) => {
                     const { options } = descriptors[route.key];
@@ -60,21 +61,23 @@ const BottomTabBar = ({ state, descriptors, navigation, translationY }) => {
 
                     {/* setting color of icon and label */ }
                     const color = isFocused ? COLORS.FOCUSED_TEXT_COLOR : COLORS.UNFOCUSED_TEXT_COLOR;
-                    const widthSharedValue = useSharedValue(isFocused ? 1 : 0);
 
+                    {/* animation stuff */}
+                    const scaleXSharedValue = useSharedValue(isFocused ? 1 : 0);
+                    const scaleXAnimation = useAnimatedStyle(() => {
+                        'worklet';
+                        return {
+                            transform: [{
+                                scaleX: scaleXSharedValue.value,
+                            }]
+                        }
+                    });
                     useEffect(() => {
-                        widthSharedValue.set(() => withTiming(isFocused ? 1 : 0, {
+                        scaleXSharedValue.set(() => withTiming(isFocused ? 1 : 0, {
                             duration: 300,
                             easing: Easing.bounce,
                         }));
                     }, [state.index]);
-
-                    const widthAnimation = useAnimatedStyle(() => {
-                        'worklet';
-                        return {
-                            width: `${widthSharedValue.value * 100}%`,
-                        };
-                    });
 
                     return (
                         <TouchableOpacity
@@ -89,14 +92,14 @@ const BottomTabBar = ({ state, descriptors, navigation, translationY }) => {
                             <View style={styles.navItem}>
                                 {/* this view contains icon */}
                                 <View>
-                                    {options.tabBarIcon({ color, focused: isFocused, size: DIMENSIONS.ICON_SIZE_30 })}
+                                    {options.tabBarIcon({ color, focused: isFocused, size: ICON_SIZE_30 })}
                                 </View>
                                 {/* this view contains label */}
                                 <View style={styles.labelContainer}>
                                     <Text style={[styles.label, { color }]}>{label}</Text>
                                 </View>
                                 {/* this view contains underline */}
-                                <Animated.View style={[styles.underline, widthAnimation]} />
+                                <Animated.View style={[styles.underline, scaleXAnimation]} />
                             </View>
                         </TouchableOpacity>
                     );
@@ -104,7 +107,7 @@ const BottomTabBar = ({ state, descriptors, navigation, translationY }) => {
             }
         </Animated.View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     tabBarContainer: {
@@ -115,12 +118,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-evenly",
         alignItems: "center",
-        position: "absolute",
-        left: 0,
-        right: 0,
-        bottom: 0,
         overflow: "hidden",
-        zIndex: DIMENSIONS.Z_INDEX_BOTTOM_TAB_BAR,
+        zIndex: DIMENSIONS.Z_INDEX_2,
     },
     navItem: {
         display: "flex",
@@ -143,6 +142,8 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.FOCUSED_TEXT_COLOR,
         borderRadius: 2,
         height: 2,
+        transformOrigin: "center",
+        width: "100%",
     },
 });
 
