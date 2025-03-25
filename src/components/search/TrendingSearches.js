@@ -29,7 +29,7 @@ const TrendingSearches = () => {
     const title = "Trending";
 
     return (
-        <View style={[STYLES.SECTION, { marginRight: 18 }]}>
+        <View style={[STYLES.SECTION, { marginRight: 20 }]}>
             <SearchHeader headerText={title} seeAllText={seeAllText} onPress={onPress} />
             {/* spawning data */}
             {

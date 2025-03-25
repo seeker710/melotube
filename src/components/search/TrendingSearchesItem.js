@@ -1,5 +1,4 @@
 import { Image, StyleSheet, Text, View } from "react-native";
-import { capitalCase } from "change-case";
 // import constants
 import { COLORS } from "../../constants/colors";
 import { STYLES } from "../../constants/styles";
@@ -20,8 +19,8 @@ const TrendingSearchesItem = ({ searchData }) => {
             </View>
             {/* this view contains text */}
             <View style={styles.textContainer}>
-                <Text numberOfLines={1} style={styles.titleText}>{capitalCase(title)}</Text>
-                <Text numberOfLines={1} style={styles.subtitleText}>{capitalCase(subtitle)}</Text>
+                <Text numberOfLines={1} style={styles.titleText}>{title}</Text>
+                <Text numberOfLines={1} style={styles.subtitleText}>{subtitle}</Text>
             </View>
             {/* this view contains view-more icon */}
             <View style={styles.iconContainer}>

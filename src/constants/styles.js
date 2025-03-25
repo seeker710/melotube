@@ -6,8 +6,8 @@ export const STYLES = StyleSheet.create({
         flex: 1,
     },
     SECTION: {
-        marginTop: 18,
-        marginLeft: 18,
+        marginTop: 20,
+        marginLeft: 20,
         marginBottom: 12,
     },
     THUMBNAIL: {

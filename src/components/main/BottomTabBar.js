@@ -7,24 +7,24 @@ import { DIMENSIONS, SNAP_BOTTOM, SNAP_TOP } from "../../constants/dimensions";
 // import hooks
 import useKeyboardVisible from "../../hooks/useKeyboardVisibile";
 
-const BottomTabBar = ({ state, descriptors, navigation, translationY }) => {
+const BottomTabBar = ({ state, descriptors, navigation, translateYSV }) => {
 
     const ICON_SIZE_30 = 30;
     // check if keyboard is visible or not
     const isKeyboardVisible = useKeyboardVisible();
 
     // animation stuff
-    const translationYAnimation = useAnimatedStyle(() => {
+    const slidingAnimation = useAnimatedStyle(() => {
         'worklet';
         return {
             transform: [{
-                translateY: interpolate(translationY.value, [SNAP_TOP, SNAP_BOTTOM], [DIMENSIONS.HEIGHT_BOTTOM_TAB_BAR, 0], Extrapolation.CLAMP)
+                translateY: interpolate(translateYSV.value, [SNAP_TOP, SNAP_BOTTOM], [DIMENSIONS.HEIGHT_BOTTOM_TAB_BAR, 0], Extrapolation.CLAMP)
             }]
         };
     });
 
     return (
-        <Animated.View style={[styles.tabBarContainer, translationYAnimation, isKeyboardVisible && { display: "none" }]}>
+        <Animated.View style={[styles.tabBarContainer, slidingAnimation, isKeyboardVisible && { display: "none" }]}>
             {
                 state.routes.map((route, index) => {
                     const { options } = descriptors[route.key];

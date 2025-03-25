@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
         alignContent: "center",
         overflow: "hidden",
         paddingBottom: 12,
-        paddingHorizontal: 28,
+        paddingHorizontal: 32,
         paddingTop: 16 + DIMENSIONS.HEIGHT_STATUS_BAR,
     },
     // styles for each nav item/container

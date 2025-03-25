@@ -6,7 +6,10 @@ const SongInfo = ({ centerText = false, title, subtitle = "" }) => {
     return (
         <View style={styles.textContainer}>
             <Text numberOfLines={1} style={[styles.titleText, centerText && { textAlign: "center" }]}>{title}</Text>
-            <Text numberOfLines={1} style={[styles.subtitleText, centerText && { textAlign: "center" }, !subtitle && { display: "none" }]}>{subtitle}</Text>
+            {/* <Text numberOfLines={1} style={[styles.subtitleText, centerText && { textAlign: "center" }, !subtitle && { display: "none" }]}>{subtitle}</Text> */}
+            {subtitle ?
+                <Text numberOfLines={1} style={[styles.subtitleText, centerText && { textAlign: "center" }]}>{subtitle}</Text>
+                : null}
         </View>
     );
 }

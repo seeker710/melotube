@@ -8,6 +8,7 @@ export const COLORS = {
     PRIMARY_COLOR: "#2bc5b4",
     PLAYER_BACKGROUND_COLOR: "#f2f2f2",
     SUB_HEADER_TEXT_COLOR: "#8b929a",
+    TOUCH_FEEDBACK_COLOR: "#D3D3D380",
     GRADIENT_COLORS: ["#c0f1ec", "#eef1f5"],
 };
 

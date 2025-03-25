@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         width: (DIMENSIONS.WIDTH_WINDOW / 2) - 18 - 3,
         marginBottom: 6,
         overflow: "hidden",
-        elevation: 1,
+        elevation: 3,
     },
     textContainer: {
         display: "flex",

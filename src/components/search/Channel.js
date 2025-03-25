@@ -15,7 +15,7 @@ const Channel = () => {
     const subTitle = "Explore your genres";
 
     return (
-        <View style={[STYLES.SECTION, { marginRight: 18, marginTop: 0 }]}>
+        <View style={[STYLES.SECTION, { marginRight: 20, marginTop: 0 }]}>
             <MusicHeader headerText={title} subHeaderText={subTitle} />
             {/* here we displaying the channels */}
             <View style={styles.channelContainer}>

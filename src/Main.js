@@ -15,7 +15,7 @@ const BottomTab = createBottomTabNavigator();
 
 const Main = () => {
     // this contains bottom positon value of bottom tab navigator
-    const translationY = useSharedValue(SNAP_BOTTOM);
+    const translateYSV = useSharedValue(SNAP_BOTTOM);
 
     return (
         <>
@@ -28,7 +28,7 @@ const Main = () => {
                     tabBarHideOnKeyboard: true,
                     tabBarLabelPosition: "below-icon",
                 }}
-                tabBar={(props) => <BottomTabBar {...props} translationY={translationY} />}
+                tabBar={(props) => <BottomTabBar {...props} translateYSV={translateYSV} />}
             >
                 <BottomTab.Screen
                     name="Home"
@@ -49,7 +49,7 @@ const Main = () => {
                 />
             </BottomTab.Navigator>
             {/* this component contains the mini player & player page */}
-            <SlidingBottom translationY={translationY} />
+            <SlidingBottom translateYSV={translateYSV} />
         </>
     );
 }
@@ -58,7 +58,7 @@ export default Main;
 /**
  * @author seeker710
  * @description z-index: 2 Bottom Tab Navigator
- * @description z-index: 1 Mini Player & Player screen
+ * @description z-index: 1 Sliding bottom
  * @description z-index: 0 Rest of screens
  * @global for icon follow snake-case
  */
